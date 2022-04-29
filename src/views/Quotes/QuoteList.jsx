@@ -23,8 +23,14 @@ useEffect(() => {
 }, [])
 
   return (
-    <div className={styles['quote-list']}>
-    {quotes.map((quote) => <Quote quote={quote} />)}
-    </div>
+    <>
+      {isLoading
+      ? (<p>
+          Loading...
+        </p>)
+      : <div className={styles['quote-list']}>
+          {quotes.map((quote) => <Quote quote={quote} />)}
+        </div>}
+    </>
   )
 }
