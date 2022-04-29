@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Quote from '../../components/Quotes/Quote';
+import styles from './QuoteList.css'
 
 export default function QuoteList() {
   const [quotes, setQuotes] = useState([]);
@@ -22,8 +23,8 @@ useEffect(() => {
 }, [])
 
   return (
-    <>
+    <div className={styles['quote-list']}>
     {quotes.map((quote) => <Quote quote={quote} />)}
-    </>
+    </div>
   )
 }
