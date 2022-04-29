@@ -1,0 +1,10 @@
+@import url('http://fonts.cdnfonts.com/css/akbar');
+
+.quote-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1 {
+  font-family: 'Akbar', sans-serif;
+}
