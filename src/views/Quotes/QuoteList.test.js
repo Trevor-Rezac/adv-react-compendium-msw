@@ -1,8 +1,9 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from '../../App';
-
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
+import { MemoryRouter } from 'react-router-dom';
 
 const quotes = [
   {
@@ -38,10 +39,22 @@ it('should display a list of characters and quotes with a title', async () => {
     level: 1,
   });
   expect(pageTitle.textContent).toEqual('Simpsons Quote Generator');
-  // await waitForElementToBeRemoved(screen.getByText(/loading.../i));
   const characterImages = await screen.findAllByAltText(
     'simpson character image'
   );
 
   expect(characterImages.length).toEqual(3);
+});
+
+it('should mock the user interaction of selecting the drop down item Bart Simpson', async () => {
+  render(<App />);
+  userEvent.selectOptions(
+    screen.getByRole('combobox'),
+
+    screen.getByRole('option', { name: 'Bart Simpson' })
+  );
+
+  expect(screen.getByRole('option', { name: 'Bart Simpson' }).selected).toBe(
+    true
+  );
 });

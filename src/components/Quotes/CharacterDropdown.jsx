@@ -11,7 +11,7 @@ export default function CharacterDropdown({ setCharacterId }) {
       <div>
         Select a character:
       </div>
-      <select onChange={handleChange}>
+      <select  onChange={handleChange}>
         <option value="Homer Simpson">Homer Simpson</option>
         <option value='Bart Simpson'>Bart Simpson</option>
         <option value='Lisa Simpson'>Lisa Simpson</option>
