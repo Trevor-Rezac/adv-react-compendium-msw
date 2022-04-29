@@ -5,7 +5,7 @@ import styles from './QuoteList.css'
 
 export default function QuoteList() {
   const [quotes, setQuotes] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [characterId, setCharacterId] = useState('');
   const [filteredCharacters, setFilteredCharacters] = useState([]);
 
@@ -13,6 +13,7 @@ export default function QuoteList() {
 
 useEffect(() => {
   const getQuotes = async () => {
+    setIsLoading(true)
     const res = await fetch('https://thesimpsonsquoteapi.glitch.me/quotes?count=10')
     const data = await res.json();
     const quotesArr = data.map((quote) => ({
@@ -28,6 +29,7 @@ useEffect(() => {
 
 useEffect(() => {
   const getCharacterQuotes = async () => {
+    setIsLoading(true)
     const res = await fetch(`https://thesimpsonsquoteapi.glitch.me/quotes?count=10&character=${characterId}`)
     const data = await res.json();
     console.log('data!!!!', data)
