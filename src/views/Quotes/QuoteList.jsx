@@ -32,14 +32,13 @@ useEffect(() => {
     setIsLoading(true)
     const res = await fetch(`https://thesimpsonsquoteapi.glitch.me/quotes?count=10&character=${characterId}`)
     const data = await res.json();
-    console.log('data!!!!', data)
+    
     const characterArr = data.map((quote) => ({
       character: quote.character,
       quote: quote.quote,
       img: quote.image
     }))
     setFilteredCharacters(characterArr);
-    console.log('filteredCharacters!!!!!', filteredCharacters);
     setIsLoading(false)
   }
   getCharacterQuotes();
